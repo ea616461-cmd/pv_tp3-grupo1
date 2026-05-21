@@ -34,13 +34,29 @@ const proyectoService = (() => {
     ];
 
     const obtenerProyectos = () => {
-        return proyectos;
+        return [...proyectos];
+    };
+
+    const agregarProyecto = (nuevoProyecto) => {
+        proyectos.push(nuevoProyecto);
+    };
+
+    const eliminarProyecto = (id) => {
+        proyectos = proyectos.filter(proyecto => proyecto.id !== id);
+    };
+
+    const buscarProyecto = (texto) => {
+        return proyectos.filter(proyecto => 
+            proyecto.titulo.toLowerCase().includes(texto.toLowerCase())
+        );
     };
 
     return {
-        obtenerProyectos
+        obtenerProyectos,
+        agregarProyecto,
+        eliminarProyecto,
+        buscarProyecto
     };
 
 })();
-
 export default proyectoService;
