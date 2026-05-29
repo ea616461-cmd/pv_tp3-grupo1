@@ -1,28 +1,19 @@
-import proyectoService from "./services/proyectoService";
+import React from 'react';
+import Header from './components/Header';
+import Nav from './components/Nav';
+import ListaProyectos from './components/lista'; 
+import Footer from './components/Footer';
+import './App.css'; 
 
 function App() {
-
-  const proyectos = proyectoService.obtenerProyectos();
-
   return (
-    <div>
-      <h1>Gestion de Proyectos Educativos</h1>
-
-      {proyectos.map((proyecto) => (
-        <div key={proyecto.id}>
-          <h2>{proyecto.titulo}</h2>
-
-          <p>
-            <strong>Categoría:</strong> {proyecto.categoria}
-          </p>
-
-          <p>
-            <strong>Estado:</strong> {proyecto.estado}
-          </p>
-
-          <hr />
-        </div>
-      ))}
+    <div className="app-container">
+      <Header />
+      <Nav />
+      <main>
+        <ListaProyectos /> 
+      </main>
+      <Footer />
     </div>
   );
 }
