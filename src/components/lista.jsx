@@ -26,7 +26,7 @@ const ListaProyectos = () => {
             <h2>Nuestros Proyectos</h2>
 
             
-            <div style={{ marginBottom: '20px' }}>
+            <div className="buscador-container">
                 <label htmlFor="buscador">Buscar proyecto: </label>
                 <input 
                     id="buscador"
@@ -34,7 +34,7 @@ const ListaProyectos = () => {
                     placeholder="Escribe el título..." 
                     value={terminoBusqueda}
                     onChange={handleBuscar} 
-                    style={{ padding: '6px', width: '250px' }}
+                    className="buscador-input"
                 />
             </div>
 
@@ -43,19 +43,19 @@ const ListaProyectos = () => {
                 <p>No se encontraron proyectos.</p>
             ) : (
                 proyectos.map((proyecto) => (
-                    <article key={proyecto.id} className="proyecto-card" style={{ borderBottom: '1px solid #555', padding: '15px 0' }}>
+                    <article key={proyecto.id} className="proyecto-card" className="proyecto-card">
                         <div className="contenido">
                             <h3>{proyecto.titulo}</h3>
                             <p><strong>Categoría:</strong> {proyecto.categoria}</p>
                             <p><strong>Estado:</strong> {proyecto.estado}</p>
                             
-                            <div style={{ marginTop: '10px', display: 'flex', gap: '15px' }}>
+                            <div className="acciones-proyecto">
                                 <a href="#" onClick={(e) => e.preventDefault()}>Ver detalle</a>
                                 
                                 
                                 <button 
                                     onClick={() => handleEliminar(proyecto.id)}
-                                    style={{ backgroundColor: '#cc0000', color: 'white', border: 'none', padding: '4px 8px', cursor: 'pointer', borderRadius: '3px' }}
+                                    className="btn-eliminar"
                                 >
                                     Eliminar
                                 </button>
