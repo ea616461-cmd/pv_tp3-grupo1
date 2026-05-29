@@ -2,32 +2,25 @@ import React from 'react';
 
 const Nav = () => {
     return (
-        <nav style={{ margin: '15px 0' }}>
-            <ul style={{ 
-                display: 'flex',           /* Los obliga a ponerse uno al lado del otro */
-                justifyContent: 'center',  /* Centra todo el menú en la pantalla */
-                gap: '30px',               /* Les da una buena separación entre ellos */
-                listStyle: 'none',         /* CORREGIDO: Sin guion y con S mayúscula */
-                padding: 0, 
-                margin: 0 
-            }}>
+        <nav className="nav-container">
+            <ul className="nav-lista">
                 <li>
-                    <a href="#" style={{ textDecoration: 'none', color: '#00d2c4', fontWeight: 'bold' }}>
+                    <a href="#" className="nav-link">
                         Inicio
                     </a>
                 </li>
                 <li>
-                    <a href="#" style={{ textDecoration: 'none', color: '#00d2c4', fontWeight: 'bold' }}>
+                    <a href="#" className="nav-link">
                         Proyectos
                     </a>
                 </li>
                 <li>
-                    <a href="#" style={{ textDecoration: 'none', color: '#00d2c4', fontWeight: 'bold' }}>
+                    <a href="#" className="nav-link">
                         Detalles
                     </a>
                 </li>
                 <li>
-                    <a href="#" style={{ textDecoration: 'none', color: '#00d2c4', fontWeight: 'bold' }}>
+                    <a href="#" className="nav-link">
                         Perfil
                     </a>
                 </li>
