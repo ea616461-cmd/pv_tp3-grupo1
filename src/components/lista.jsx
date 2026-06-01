@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'; // <-- CORREGIDO: Sumamos us
 import proyectoService from '../services/proyectoService.js';
 import ProyectoCard from './ProyectoCard'; 
 import RegistroActividad from './RegistroActividad'; // <-- CORREGIDO: Importamos el componente de registro
-
+import FormularioProyecto from './FormularioProyecto';
 const ListaProyectos = () => {
     
     const [proyectos, setProyectos] = useState(proyectoService.obtenerProyectos());
@@ -35,6 +35,10 @@ const ListaProyectos = () => {
     return (
         <section className="contenedor-proyectos">
             <h2>Nuestros Proyectos</h2>
+            <FormularioProyecto onAgregarProyecto={(nuevoProyecto) => {
+    proyectoService.guardarProyecto(nuevoProyecto);
+    setProyectos(proyectoService.obtenerProyectos());
+}} />
 
             <div style={{ marginBottom: '20px' }}>
                 <label htmlFor="buscador">Buscar proyecto: </label>
