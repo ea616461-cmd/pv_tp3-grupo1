@@ -40,7 +40,7 @@ const ListaProyectos = () => {
     setProyectos(proyectoService.obtenerProyectos());
 }} />
 
-            <div style={{ marginBottom: '20px' }}>
+            <div className="buscador-container">
                 <label htmlFor="buscador">Buscar proyecto: </label>
                 <input 
                     id="buscador"
@@ -48,7 +48,7 @@ const ListaProyectos = () => {
                     placeholder="Escribe el título..." 
                     value={terminoBusqueda}
                     onChange={handleBuscar} 
-                    style={{ padding: '6px', width: '250px' }}
+                    className="buscador-input"
                 />
             </div>
 
@@ -56,6 +56,7 @@ const ListaProyectos = () => {
                 <p>No se encontraron proyectos.</p>
             ) : (
                 proyectos.map((proyecto) => (
+
                     <ProyectoCard 
                         key={proyecto.id} 
                         proyecto={proyecto} 
