@@ -181,23 +181,23 @@
     right: 0;
     border-right-color: var(--border);
   }
-  /* 1. El contenedor que envuelve a todas las tarjetas */
+  /
 .contenedor-proyectos {
-    display: flex;          /* Activa el modo flexible */
-    flex-wrap: wrap;        /* Si no entran más en la fila, los manda abajo automáticamente */
-    gap: 20px;              /* El espacio de separación entre tarjeta y tarjeta */
-    justify-content: center; /* Centra las tarjetas en la pantalla */
+    display: flex;         
+    flex-wrap: wrap;        
+    gap: 20px;              
+    justify-content: center; 
     padding: 20px;
 }
 
-/* 2. La estructura de cada tarjeta individual */
+
 .proyecto-card {
-    background-color: #1e1e1e; /* Fondo oscuro para la tarjeta (o el color de tu TP1) */
+    background-color: #1e1e1e; 
     border: 1px solid #333;
     border-radius: 8px;
     padding: 20px;
-    width: 280px;             /* Ancho fijo para que todas las tarjetas midan lo mismo */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Una leve sombra para darles profundidad */
+    width: 280px;             
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); 
     display: flex;
     flex-direction: column;
     justify-content: space-between;

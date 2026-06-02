@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react'; // <-- CORREGIDO: Sumamos useEffect en el import
 import proyectoService from '../services/proyectoService.js';
+import ProyectoCard from './ProyectoCard'; 
+import RegistroActividad from './RegistroActividad'; // <-- CORREGIDO: Importamos el componente de registro
+
 const ListaProyectos = () => {
     
     const [proyectos, setProyectos] = useState(proyectoService.obtenerProyectos());
     const [terminoBusqueda, setTerminoBusqueda] = useState(''); 
+    
+    // CORREGIDO: Declaramos el estado para que useEffect pueda guardar la fecha
+    const [ultimaModificacion, setUltimaModificacion] = useState(null);
+
     const handleEliminar = (id) => {
         proyectoService.eliminarProyecto(id); 
         setProyectos(proyectoService.obtenerProyectos()); 
@@ -21,11 +28,14 @@ const ListaProyectos = () => {
         }
     };
 
+    useEffect(() => {
+        setUltimaModificacion(new Date());
+    }, [proyectos]);
+
     return (
         <section className="contenedor-proyectos">
             <h2>Nuestros Proyectos</h2>
 
-            
             <div className="buscador-container">
                 <label htmlFor="buscador">Buscar proyecto: </label>
                 <input 
@@ -38,32 +48,21 @@ const ListaProyectos = () => {
                 />
             </div>
 
-           
             {proyectos.length === 0 ? (
                 <p>No se encontraron proyectos.</p>
             ) : (
                 proyectos.map((proyecto) => (
-                    <article key={proyecto.id} className="proyecto-card" className="proyecto-card">
-                        <div className="contenido">
-                            <h3>{proyecto.titulo}</h3>
-                            <p><strong>Categoría:</strong> {proyecto.categoria}</p>
-                            <p><strong>Estado:</strong> {proyecto.estado}</p>
-                            
-                            <div className="acciones-proyecto">
-                                <a href="#" onClick={(e) => e.preventDefault()}>Ver detalle</a>
-                                
-                                
-                                <button 
-                                    onClick={() => handleEliminar(proyecto.id)}
-                                    className="btn-eliminar"
-                                >
-                                    Eliminar
-                                </button>
-                            </div>
-                        </div>
-                    </article>
+
+                    <ProyectoCard 
+                        key={proyecto.id} 
+                        proyecto={proyecto} 
+                        onEliminar={handleEliminar} 
+                    />
                 ))
             )}
+
+            {/* CORREGIDO: Agregamos el componente visual abajo del todo como pide el TP */}
+            <RegistroActividad ultimaModificacion={ultimaModificacion} />
         </section>
     );
 };
