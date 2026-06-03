@@ -1,8 +1,20 @@
 import React from 'react';
+
 const RegistroActividad = ({ ultimaModificacion }) => {
-    const fechaFormateada = ultimaModificacion 
-        ? new Date(ultimaModificacion).toLocaleTimeString() + ' - ' + new Date(ultimaModificacion).toLocaleDateString()
-        : "Sin modificaciones recientes en esta sesión";
+    
+    // FUNCION para el formato del mensaje
+    const obtenerMensajeFormateado = (fechaObjeto) => {
+        if (!fechaObjeto) return "Sin modificaciones recientes en esta sesión";
+        const fecha = new Date(fechaObjeto);
+        const dia = String(fecha.getDate()).padStart(2, '0');
+        const mes = String(fecha.getMonth() + 1).padStart(2, '0');
+        const anio = fecha.getFullYear();
+        const horas = String(fecha.getHours()).padStart(2, '0');
+        const minutos = String(fecha.getMinutes()).padStart(2, '0');
+        // Formato exacto pedido por la consigna
+        return `Última actualización de la lista: ${dia}/${mes}/${anio} a las ${horas}:${minutos} hs.`;
+    };
+    const fechaFormateada = obtenerMensajeFormateado(ultimaModificacion);
 
     return (
         <div className="registro-actividad" style={{
@@ -14,8 +26,9 @@ const RegistroActividad = ({ ultimaModificacion }) => {
             color: '#aaa',
             fontSize: '14px'
         }}>
+            {/* Dejamos que tu función controle todo el string */}
             <p style={{ margin: 0 }}>
-                🔄 <strong>Última actualización del sistema:</strong> {fechaFormateada}
+                🔄 {fechaFormateada}
             </p>
         </div>
     );
