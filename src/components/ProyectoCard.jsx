@@ -9,8 +9,6 @@ const ProyectoCard = ({ proyecto, onEliminar }) => {
             
             <div className="botones-card">
                 <button className="btn-detalle">Ver detalle</button>
-                
-                {/* CORREGIDO: Le agregamos el evento onClick para que ejecute la función usando el ID */}
                 <button 
                     className="btn-eliminar" 
                     onClick={() => onEliminar(id)}
