@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'; // <-- CORREGIDO: Sumamos useEffect en el import
+import React, { useState, useEffect, useRef } from 'react'; // <-- CORREGIDO: Sumamos useEffect en el import
 import proyectoService from '../services/proyectoService.js';
 import ProyectoCard from './ProyectoCard'; 
 import RegistroActividad from './RegistroActividad'; // <-- CORREGIDO: Importamos el componente de registro
@@ -10,8 +10,11 @@ const ListaProyectos = () => {
     
     // CORREGIDO: Declaramos el estado para que useEffect pueda guardar la fecha
     const [ultimaModificacion, setUltimaModificacion] = useState(null);
+    const primeraCarga = useRef(true);
+    const cambioReal = useRef(false);
 
     const handleEliminar = (id) => {
+        cambioReal.current = true;
         proyectoService.eliminarProyecto(id); 
         setProyectos(proyectoService.obtenerProyectos()); 
     };
@@ -29,7 +32,16 @@ const ListaProyectos = () => {
     };
 
     useEffect(() => {
+    if (primeraCarga.current) {
+        primeraCarga.current = false;
+        return;
+    }
+
+    if (!cambioReal.current) {
+        return;
+    }
         setUltimaModificacion(new Date());
+        cambioReal.current = false;
     }, [proyectos]);
 
     return (
@@ -61,7 +73,7 @@ const ListaProyectos = () => {
             )}
 
             {/* CORREGIDO: Agregamos el componente visual abajo del todo como pide el TP */}
-            <RegistroActividad ultimaModificacion={ultimaModificacion} />
+            {ultimaModificacion && (<RegistroActividad ultimaModificacion={ultimaModificacion} />)}
         </section>
     );
 };
