@@ -6,10 +6,12 @@ import Nav from './components/Nav';
 import ListaProyectos from './components/lista'; 
 import ProyectoDetalle from './components/ProyectoDetalle'; 
 import Footer from './components/Footer';
+import Dashboard from './views/Dashboard';
+import PerfilUsuario from './views/PerfilUsuario';
 import './css/styles.css';
 
-const Dashboard = () => <div style={{ padding: '20px' }}><h2>Dashboard (Inicio)</h2></div>;
-const Perfil = () => <div style={{ padding: '20px' }}><h2>Mi Perfil</h2></div>;
+//const Dashboard = () => <div style={{ padding: '20px' }}><h2>Dashboard (Inicio)</h2></div>;
+//const Perfil = () => <div style={{ padding: '20px' }}><h2>Mi Perfil</h2></div>;
 
 function App() {
   return (
@@ -23,7 +25,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/proyectos" element={<ListaProyectos />} />
             <Route path="/proyectos/:id" element={<ProyectoDetalle />} />
-            <Route path="/perfil" element={<Perfil />} />
+            <Route path="/perfil" element={<PerfilUsuario />} />
           </Routes>
         </main>
         <Footer />
