@@ -42,6 +42,25 @@
 
 .nav-link {
     text-decoration: none;
-    color: #00d2c4;
+    color: #448cde;
     font-weight: bold;
+}
+.proyectos-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 20px 0;
+    width: 100%;
+}
+
+.proyecto-card {
+    background-color: #484747;
+    color: #fdfdfd;
+    border: 1px solid #050303;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }

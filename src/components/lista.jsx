@@ -8,7 +8,7 @@ const ListaProyectos = () => {
     const [proyectos, setProyectos] = useState(proyectoService.obtenerProyectos());
     const [terminoBusqueda, setTerminoBusqueda] = useState(''); 
     
-    // CORREGIDO: Declaramos el estado para que useEffect pueda guardar la fecha
+   
     const [ultimaModificacion, setUltimaModificacion] = useState(null);
     const primeraCarga = useRef(true);
     const cambioReal = useRef(false);
@@ -72,7 +72,6 @@ const ListaProyectos = () => {
                 ))
             )}
 
-            {/* CORREGIDO: Agregamos el componente visual abajo del todo como pide el TP */}
             {ultimaModificacion && (<RegistroActividad ultimaModificacion={ultimaModificacion} />)}
         </section>
     );
